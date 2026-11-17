@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>糯米团子的小宇宙</title>
+<style>
+:root{--bg:#fff3f0;--card:#fff;--ink:#5b3a4a;--soft:#a9818f;--pink:#ff8fab;--peach:#ffc8a2;--mint:#a8e6cf;--sky:#b8d8ff;--line:#ffd9e2;--track:#ffe3ea;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2a1d26;--card:#3a2833;--ink:#ffe9f0;--soft:#d3a9b9;--peach:#e8a57d;--mint:#7fcfae;--sky:#8bb6ee;--line:#5a3f4d;--track:#4a3341}}
+:root[data-theme="dark"]{--bg:#2a1d26;--card:#3a2833;--ink:#ffe9f0;--soft:#d3a9b9;--peach:#e8a57d;--mint:#7fcfae;--sky:#8bb6ee;--line:#5a3f4d;--track:#4a3341}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Baloo 2","Nunito","PingFang SC","Hiragino Maru Gothic ProN","Microsoft YaHei",system-ui,sans-serif;line-height:1.5}
+main{max-width:900px;margin:0 auto;padding:14px 14px 60px}
+.ban{position:relative;overflow:hidden;border-radius:32px;padding:22px 20px;margin-bottom:16px;background:linear-gradient(135deg,color-mix(in srgb,var(--pink) 45%,#fff),color-mix(in srgb,var(--pink) 15%,#fff3dc));color:#5b3a4a}
+.ban h1{margin:0;font-size:28px}.ban .yr{position:absolute;right:16px;top:10px;font-size:30px;font-weight:800;opacity:.55}
+.ban .sl{display:inline-block;margin-top:4px;font-size:17px;outline:none;border-radius:10px;padding:0 6px}
+.ban .fl{position:absolute;font-size:24px;animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.card{background:var(--card);border-radius:28px;padding:16px;margin-bottom:16px;border:3px solid var(--line)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 16px}
+.ct{font-weight:800;margin:0 0 10px;font-size:17px}
+.deco{margin-top:12px;padding-top:8px;border-top:2px dotted var(--line);font-size:13px;color:var(--soft);display:flex;gap:8px;align-items:center;justify-content:center}
+.deco .em{font-size:20px}
+.hero{display:flex;gap:14px;align-items:center}.hero svg{flex:none;width:84px;height:84px}
+.big{flex:1;min-width:0}.pct{font-size:38px;font-weight:800;color:var(--pink);line-height:1}
+.mood{font-size:14px;color:var(--soft);margin-top:4px}
+.bar{height:20px;background:var(--track);border-radius:99px;overflow:hidden;margin-top:8px}
+.fill{height:100%;border-radius:99px;background:repeating-linear-gradient(135deg,var(--pink) 0 14px,color-mix(in srgb,var(--pink) 70%,white) 14px 28px);transition:width .6s cubic-bezier(.3,1.6,.5,1)}
+.tr{display:flex;align-items:center;gap:8px;margin:8px 0;font-size:14px}.tr span:first-child{width:66px;flex:none}.tr .bar{flex:1;margin:0;height:16px}.tr b{width:42px;text-align:right}
+.tabs,.set{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.tab{background:var(--track)}.tab.on{background:var(--pink);color:#fff}
+.sec{margin:12px 0;padding-top:10px;border-top:2px dashed var(--line)}
+.sec-h{display:flex;gap:8px;align-items:center;font-weight:700;margin-bottom:6px}.sec-h .nm{flex:1}.sec-h small{color:var(--soft)}
+.mini{height:10px;background:var(--track);border-radius:99px;overflow:hidden;margin-bottom:6px}.mini i{display:block;height:100%;background:var(--mint);border-radius:99px;transition:width .5s}
+.item{display:flex;align-items:center;gap:8px;padding:5px 8px;border-radius:18px;cursor:pointer;position:relative}
+.item:hover{background:var(--track)}.item:focus-within{outline:3px solid var(--sky)}
+.item input{position:absolute;opacity:0;pointer-events:none}
+.box{flex:none;width:24px;height:24px;border-radius:50%;border:3px solid var(--peach);display:grid;place-items:center;font-size:13px;color:transparent;transition:.2s}
+input:checked+.box{background:var(--mint);border-color:var(--mint);color:#2d6a50;transform:scale(1.1)}
+.nm{outline:none;border-radius:8px;padding:0 4px;flex:1;min-width:0}.nm:focus{background:var(--track)}
+input:checked~.nm{text-decoration:line-through;color:var(--soft)}
+.tm{flex:none;font-size:12px;background:var(--track);border-radius:99px;padding:0 8px;color:var(--soft)}
+.x{flex:none;background:none;color:var(--soft);padding:2px 8px;font-size:15px}.x:hover{color:var(--pink)}
+.add{display:flex;gap:6px;margin-top:6px}.add input[type=text]{flex:1}.add .tmi{flex:none;width:64px}
+input[type=text],input[type=date],input[type=number],textarea{font:inherit;color:var(--ink);background:var(--track);border:2px solid transparent;border-radius:16px;padding:6px 12px;min-width:0;width:100%}
+.add input{width:auto}.add .tmi{width:64px}
+input:focus,textarea:focus{outline:none;border-color:var(--pink)}
+textarea{min-height:80px;resize:vertical}
+button{font:inherit;border:0;border-radius:99px;padding:6px 14px;background:var(--track);color:var(--ink);cursor:pointer}
+button.p{background:var(--pink);color:#fff;font-weight:700}button:focus-visible{outline:3px solid var(--sky)}
+.cal-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.dw{font-size:12px;color:var(--soft)}
+.cd{position:relative;padding:6px 0;border-radius:14px;background:none;font-size:14px}.cd i{position:absolute;right:0;top:-2px;font-size:10px;font-style:normal}
+.cd.inwk{background:var(--track)}.cd.today{background:var(--pink);color:#fff;font-weight:800}
+.wnav{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}.wnav b{flex:1;min-width:140px}
+.days{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin:12px 0}
+.day{border:3px solid var(--line);border-radius:22px;padding:10px;background:var(--bg)}.day.tdy{border-color:var(--pink)}
+.dh{display:flex;justify-content:space-between;margin-bottom:6px;font-size:16px}.dh small{color:var(--soft)}
+.moods,.cups{display:flex;gap:2px;margin:6px 0;flex-wrap:wrap}
+.mo,.cp{background:none;padding:0 4px;font-size:18px;opacity:.35}.mo.on,.cp.on{opacity:1;transform:scale(1.2)}
+.nums{display:flex;gap:6px;margin-bottom:4px}.nums label{flex:1;font-size:13px;display:flex;gap:4px;align-items:center}
+.stat{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.stat span{background:var(--track);border-radius:99px;padding:2px 12px;font-size:13px}
+.wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:420px}th{font-size:12px;color:var(--soft)}td{padding:3px;text-align:center}td:first-child{text-align:left}
+.hc{width:30px;height:30px;padding:0;border-radius:50%;background:var(--track)}.hc.on{background:var(--mint)}
+.awr{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;padding:8px;border-radius:20px;background:var(--bg)}.awr input[type=date]{flex:0 0 150px}.awr input[type=text]{flex:1 1 150px}
+.vis{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin:8px 0}
+.st{position:relative;border-radius:20px;padding:14px 10px;text-align:center;color:#5b3a4a;min-height:100px;display:flex;flex-direction:column;justify-content:center;gap:2px}
+.st b{font-size:32px}.st .x{position:absolute;right:2px;top:2px;color:#5b3a4a;opacity:.5}
+.s0{background:#ffe0e8;transform:rotate(-2deg)}.s1{background:#dff4e9;transform:rotate(1.5deg)}.s2{background:#e3eeff;transform:rotate(-1deg)}.s3{background:#fff0d9;transform:rotate(2deg)}.s4{background:#efe4ff;transform:rotate(-1.5deg)}
+.q4{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-bottom:10px}
+.ev{display:flex;gap:12px;align-items:center;padding:8px 0;border-top:2px dashed var(--line)}.ev:first-of-type{border-top:0}
+.dd{flex:none;width:62px;text-align:center;border-radius:18px;padding:5px 0;background:var(--track)}.dd b{display:block;font-size:22px;line-height:1.1}.dd span{font-size:11px;color:var(--soft)}
+.ev.soon .dd{background:var(--pink);color:#fff}.ev.soon .dd span{color:#fff}.ev.past{opacity:.45}
+.ev h3{margin:0;font-size:15px}.ev p{margin:0;font-size:13px;color:var(--soft)}.ev>div:nth-child(2){flex:1;min-width:0}
+.evadd{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.evadd input[type=text]{flex:1;min-width:110px;width:auto}.evadd input[type=date]{width:auto}
+.pomo{text-align:center}.clock{font-size:54px;font-weight:800;color:var(--pink);line-height:1.1}
+.row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:8px;align-items:center;font-size:14px}.row input{width:64px}
+.chip{border:2px solid var(--line);background:none;font-size:13px}.chip.on{background:var(--mint);border-color:var(--mint);color:#2d6a50}
+.sw{width:30px;height:30px;padding:0;border-radius:50%;border:3px solid var(--card)}.sw.on{outline:3px solid var(--ink)}
+.lb{font-size:13px;color:var(--soft);margin:8px 0 2px}.tip{font-size:12px;color:var(--soft);margin:4px 0 0}
+[data-o][contenteditable=true]:focus{background:var(--track);border-radius:8px;outline:none}
+select{font:inherit;color:var(--ink);background:var(--track);border:2px solid transparent;border-radius:16px;padding:6px 10px}
+.cl small{display:block;color:var(--soft);font-size:12px}.cl{align-items:flex-start;background:var(--track);margin:3px 0}
+.pop{position:fixed;inset:0;pointer-events:none;overflow:hidden}.pop span{position:absolute;top:-30px;font-size:22px;animation:fall 2s ease-in forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.fill,.mini i,.box{transition:none}.pop,.ban .fl{display:none}}
+</style>
+</head>
+<body>
+<main>
+<header class="ban" id="ban"><span class="yr" id="yr"></span><span class="fl" style="left:62%;top:14px">☁️</span><span class="fl" style="left:80%;bottom:10px;animation-delay:.8s">🌸</span><span class="fl" style="left:48%;bottom:8px;animation-delay:1.5s">✨</span>
+<h1>🍡 糯米团子的小宇宙</h1><span class="sl" id="sl" contenteditable="true" spellcheck="false" data-rp="slogan"></span></header>
+<div class="grid2"><div class="card" id="c-cal"></div><div class="card" id="c-time"></div></div>
+<div class="card" id="c-nav"></div>
+<div class="grid2"><div class="card" id="c-yg"></div><div class="card" id="c-mg"></div></div>
+<div class="card" id="c-cls"></div>
+<div class="card" id="c-week"></div>
+<div class="card" id="c-q"></div>
+<div class="card" id="c-study"></div>
+<div class="grid2"><div class="card" id="c-todo"></div><div class="card" id="c-ev"></div></div>
+<div class="card" id="c-aw"></div>
+<div class="card" id="c-vis"></div>
+<div class="grid2"><div class="card pomo" id="c-pomo"></div><div class="card" id="c-notes"></div></div>
+<div class="card" id="c-set"></div>
+</main>
+<div class="pop" id="pop"></div>
+<script>
+var KEY="shl-v3",$=function(i){return document.getElementById(i)},uid=function(){return Math.random().toString(36).slice(2,9)};
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function ds(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function pd(s){var p=s.split("-");return new Date(+p[0],p[1]-1,+p[2])}
+function mon(d){return new Date(d.getFullYear(),d.getMonth(),d.getDate()-(d.getDay()+6)%7)}
+var NOW=new Date(),TODAY=ds(NOW),WK=mon(NOW),CM=new Date(NOW.getFullYear(),NOW.getMonth(),1),Y=NOW.getFullYear();
+var TT={cal:"🗓️ 月亮小日历",time:"🍓 时间草莓条",nav:"🧭 小地图",yg:"🎯 年度小愿望",mg:"🍑 本月小目标",cls:"🎓 我的课表小本",week:"🌷 一周小花园",q:"🍰 四季小蛋糕",study:"📚 学习小糕点",todo:"🐰 今日兔兔清单",ev:"⏰ 考试小闹钟",aw:"✨ 我超棒小本本",vis:"🎀 梦想贴纸墙",pomo:"🍅 小番茄专注舱",notes:"📒 灵感小云朵",set:"🎀 装扮小工坊"};
+var DC={cal:["(˶ᵔ ᵕ ᵔ˶)","每一天都在发光","🌙"],time:["٩(◕‿◕)۶","草莓慢慢熟透啦","🍓"],nav:["(๑•̀ㅂ•́)و✧","迷路了就点这里","🧭"],yg:["(｡•̀ᴗ-)✧","小愿望一颗一颗实现","🎯"],mg:["ヾ(≧▽≦*)o","这个月也要软软地努力","🍑"],cls:["(ﾉ◕ヮ◕)ﾉ*","每节课都元气满满","🎒"],week:["(੭ˊᵕˋ)੭*","花园里每一朵都要浇水","🌷"],q:["(ﾉ´ヮ`)ﾉ*","四季轮转，蛋糕分你一块","🍰"],study:["φ(゜▽゜*)♪","学一口，开心一口","🍮"],todo:["(=^･ω･^=)","做完就有胡萝卜","🐰"],ev:["(ᵔᴥᵔ)","一步一步来，不用怕","⏰"],aw:["(๑˃ᴗ˂)ﻭ","你今天已经很棒啦","🌟"],vis:["(*´∀`)~♥","想象成真的样子","🎀"],pomo:["(っ˘ω˘ς)","专注完奖励自己一杯奶茶","🧋"],notes:["(⁎˃ᴗ˂⁎)","灵感都在云朵里","☁️"],set:["(｡♥‿♥｡)","把小屋打扮成喜欢的样子","🎀"]};
+function mk(t,a){return{id:uid(),t:t,items:a.map(function(n){return{id:uid(),t:n,d:false}})}}
+function li(t){return{id:uid(),t:t,d:false}}
+function CL0(){var A="内科学 Internal Medicine of TCM",T="伤寒论 Treatise on Exogenous Febrile Disease",W="Wang Yujie",L="Lim Chee Hoong",M="Aslam Muhammad Shahzad";
+ return [[0,"08:00","11:00","TCM319",A,W,"A1#G03"],[0,"13:00","15:00","TCM301",T,L,"A3#507"],[1,"12:00","14:00","TCM301",T,L,"A1#G03"],[1,"16:00","18:00","TCM319",A,W,"A3#505"],[2,"09:00","11:00","TCM319",A,W,"A2#G09"],[2,"11:00","12:00","MED304","Critical Thinking in Clinical Practice",M,"A2#104"],[3,"08:00","11:00","TCM319",A,W,"A1#G03"],[3,"12:00","15:00","MED302","Research Project",M,"A1#103"]].map(function(r){return{id:uid(),dow:r[0],s:r[1],e:r[2],code:r[3],name:r[4],teacher:r[5],room:r[6]}})}
+function def(){return{cur:"s1",accent:"#ff8fab",hide:{},notes:"",slogan:"今年的梦想都会成真 ✨",pomo:{w:25,b:5,c:0},
+ subs:[{id:"s1",name:"伤寒论 · 辨太阳病",secs:[mk("第一节",["第一节"]),mk("第二节",["2.1","2.2","2.3","2.4"]),mk("第三节",["3.1","3.2"]),mk("第四节",["4.1","4.2"]),mk("第五节",["5.1","5.2"])]},{id:"s2",name:"内科学 OSCE",secs:[mk("要复习的站",[])]},{id:"s3",name:"Critical Thinking",secs:[mk("Quiz 复习",[])]}],
+ events:[{id:uid(),d:"2026-12-10",time:"10:00–12:00",t:"伤寒论 Midterm",e:"📖"},{id:uid(),d:"2026-12-16",time:"",t:"内科学 OSCE Mock",e:"🩺"},{id:uid(),d:"2026-12-16",time:"18:00–22:00",t:"Critical Thinking Quiz 1 + 伤寒论 Tutor Evaluation",e:"📝"},{id:uid(),d:"2026-12-18",time:"13:00",t:"内科学 OSCE",e:"🩺"},{id:uid(),d:"2026-12-23",time:"",t:"Critical Thinking Quiz 2",e:"📝"}],
+ todos:[li("打开小宇宙，打勾第一件事")],goals:[li("伤寒论 midterm 拿高分"),li("内科学 OSCE 顺利通过")],
+ habits:[{id:uid(),n:"🌅 早起"},{id:uid(),n:"💧 喝水"},{id:uid(),n:"🏃 运动"},{id:uid(),n:"📖 复习"},{id:uid(),n:"😴 早睡"}],
+ wk:{},mg:{},q:{},yr:{},aw:[],lbl:{},classes:CL0(),vis:[{id:uid(),e:"🏆",t:"考试全部高分"},{id:uid(),e:"🌈",t:"放假去旅行"}]}}
+function lsl(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}}
+var S=lsl(KEY)||lsl("shl-v2")||{};
+(function(){var D=def();for(var k in D)if(!(k in S))S[k]=D[k];S.subs.forEach(function(s){s.secs.forEach(function(x){x.items.forEach(function(i){if(i.t==null)i.t=i.n})})})})();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function gp(p){var o=S;p=p.split("|");for(var i=0;i<p.length;i++){if(o==null)return;o=o[p[i]]}return o}
+function sp(p,v){p=p.split("|");var o=S;for(var i=0;i<p.length-1;i++){if(o[p[i]]==null)o[p[i]]={};o=o[p[i]]}o[p[p.length-1]]=v}
+function gl(p){var a=gp(p);if(!Array.isArray(a)){a=[];sp(p,a)}return a}
+function pid(p){return p.replace(/\|/g,"_")}
+function sub(){return S.subs.find(function(s){return s.id===S.cur})||S.subs[0]}
+var EM=false,SK=".ct,.lb,.tip,.deco>span:last-child,.chip,.wnav button,.dh b,h1";
+function skin(r){r.querySelectorAll(SK).forEach(function(el){if(el.children.length||el.dataset.noed!==undefined)return;var o=el.dataset.o!==undefined?el.dataset.o:el.textContent;el.dataset.o=o;el.textContent=S.lbl[o]||o;if(el.tagName!=="BUTTON"||EM){el.contentEditable="true";el.spellcheck=false}})}
+function card(k,body){var c=$("c-"+k),d=DC[k];c.innerHTML='<p class="ct">'+TT[k]+'</p>'+body+'<div class="deco"><span class="em">'+d[2]+'</span><span>'+d[0]+' '+d[1]+'</span></div>';c.hidden=!!S.hide[k];skin(c)}
+function B(p,ph,ta,ex){var v=gp(p);v=v==null?"":v;return ta?'<textarea data-b="'+p+'" placeholder="'+ph+'">'+esc(v)+'</textarea>':'<input type="text" data-b="'+p+'" placeholder="'+ph+'" value="'+esc(v)+'" '+(ex||"")+'>'}
+function LST(p,ph,tm){var a=gl(p).slice(),q=pid(p);if(tm)a.sort(function(x,y){return(x.tm||"99")<(y.tm||"99")?-1:1});
+ return a.map(function(i){return'<label class="item"><input type="checkbox" data-a="lt" data-p="'+p+'" data-i="'+i.id+'"'+(i.d?' checked':'')+'><span class="box">✓</span>'+(i.tm?'<span class="tm">'+esc(i.tm)+'</span>':'')+'<span class="nm" contenteditable="true" spellcheck="false" data-r="l" data-p="'+p+'" data-i="'+i.id+'">'+esc(i.t)+'</span><button class="x" data-a="ld" data-p="'+p+'" data-i="'+i.id+'" aria-label="删除">✕</button></label>'}).join("")
+ +'<div class="add">'+(tm?'<input type="text" class="tmi" id="tm-'+q+'" placeholder="时间" aria-label="时间">':'')+'<input type="text" id="in-'+q+'" placeholder="'+ph+'" data-enter="ab-'+q+'"><button class="p" id="ab-'+q+'" data-a="la" data-p="'+p+'">＋</button></div>'}
+function prog(a){var t=a.length,d=a.filter(function(i){return i.d}).length;return[d,t]}
+
+var DN=["周一","周二","周三","周四","周五","周六","周日"],DE=["🐰","🐻","🐱","🐶","🐥","🦊","🐼"],MO=["🥰","😊","😐","🥺","😤"];
+function rCal(){
+ var y=CM.getFullYear(),m=CM.getMonth(),f=(new Date(y,m,1).getDay()+6)%7,dim=new Date(y,m+1,0).getDate(),ev={},aw={},w0=ds(WK),w1=ds(new Date(WK.getFullYear(),WK.getMonth(),WK.getDate()+6));
+ S.events.forEach(function(e){ev[e.d]=1});S.aw.forEach(function(a){if(a.d)aw[a.d]=1});
+ var h='<div class="cal-h"><button class="x" data-a="cm" data-n="-1" aria-label="上个月">‹</button><b>'+y+'年'+(m+1)+'月</b><button class="x" data-a="cm" data-n="1" aria-label="下个月">›</button></div><div class="cal">'+"一二三四五六日".split("").map(function(c){return'<span class="dw">'+c+'</span>'}).join("");
+ for(var i=0;i<f;i++)h+="<span></span>";
+ for(var d=1;d<=dim;d++){var k=ds(new Date(y,m,d));h+='<button class="cd'+(k===TODAY?' today':k>=w0&&k<=w1?' inwk':'')+'" data-a="cday" data-d="'+k+'">'+d+(ev[k]?'<i>⭐</i>':aw[k]?'<i>💗</i>':'')+'</button>'}
+ card("cal",h+'</div><p class="tip">⭐ 有考试/作业　💗 写了小本本　点日期跳到那一周</p>');
+}
+function rTime(){
+ var n=new Date(),df=(n.getHours()*60+n.getMinutes())/1440,dim=new Date(n.getFullYear(),n.getMonth()+1,0).getDate(),y0=new Date(n.getFullYear(),0,1),
+ R=[["🌞 今天",df],["🌷 本周",((n.getDay()+6)%7+df)/7],["🍑 本月",(n.getDate()-1+df)/dim],["🍓 今年",(n-y0)/(new Date(n.getFullYear()+1,0,1)-y0)]];
+ card("time",R.map(function(r){var v=Math.round(r[1]*100);return'<div class="tr"><span>'+r[0]+'</span><div class="bar" role="progressbar" aria-valuenow="'+v+'" aria-valuemin="0" aria-valuemax="100"><div class="fill" style="width:'+v+'%"></div></div><b>'+v+'%</b></div>'}).join(""));
+}
+function rNav(){
+ var ks=Object.keys(TT).filter(function(k){return k!=="nav"});
+ card("nav",'<div class="set">'+ks.map(function(k){return'<button class="chip on" data-a="go" data-k="'+k+'">'+TT[k]+'</button>'}).join("")+'<button class="chip on" data-a="go" data-k="week">🫧 周泡泡复盘</button><button class="chip on" data-a="go" data-k="mg">🫧 月泡泡复盘</button><button class="chip on" data-a="go" data-k="q">🫧 年度回顾</button><button class="chip" data-a="em" data-noed>'+(EM?"✅ 改字中（点我结束）":"✏️ 改字模式")+'</button></div><p class="tip">小提示：所有标题和文字都能直接点一下修改。想改按钮上的字，先开「改字模式」。</p>');
+}
+function rYg(){card("yg",'<p class="lb">'+Y+' 年最想完成的事</p>'+LST("goals","加一个小愿望…"))}
+function rMg(){var ym=ds(CM).slice(0,7),p="mg|"+ym;card("mg",'<p class="lb">'+(CM.getMonth()+1)+' 月的小目标（跟着日历的月份走）</p>'+LST(p+"|goals","加一个本月目标…")+'<p class="lb">🫧 月泡泡复盘</p>'+B(p+"|rev","这个月做得怎么样呀…",1))}
+function dayCls(i,p){var A=S.classes.filter(function(c){return +c.dow===i}).sort(function(x,y){return x.s<y.s?-1:1}),d=0;
+ var h=A.map(function(c){var on=!!gp(p+"|cls|"+c.id);if(on)d++;return'<label class="item cl"><input type="checkbox" data-a="cd" data-b="'+p+'|cls|'+c.id+'"'+(on?' checked':'')+'><span class="box">✓</span><span class="nm"><b>'+esc(c.s)+'–'+esc(c.e)+'</b> '+esc(c.code)+' '+esc(c.name)+'<small>📍 '+esc(c.room)+(c.teacher?' · '+esc(c.teacher):'')+'</small></span></label>'}).join("");
+ return[A.length?'<p class="lb" style="margin:4px 0 0">🎒 今天的课</p>'+h:'',A.length,d]}
+function rCls(){
+ var A=S.classes.map(function(c,i){return{c:c,i:i}}).sort(function(x,y){return x.c.dow-y.c.dow||(x.c.s<y.c.s?-1:1)});
+ card("cls",A.map(function(r){var q="classes|"+r.i+"|";return'<div class="awr"><select data-b="'+q+'dow" data-rr="week" aria-label="星期">'+DN.map(function(n,k){return'<option value="'+k+'"'+(+r.c.dow===k?' selected':'')+'>'+n+'</option>'}).join("")+'</select>'+B(q+"s","开始",0,'data-rr="week" style="flex:0 0 76px"')+B(q+"e","结束",0,'data-rr="week" style="flex:0 0 76px"')+B(q+"code","课程代码",0,'data-rr="week" style="flex:0 0 100px"')+B(q+"name","课程名称",0,'data-rr="week"')+B(q+"room","地点",0,'data-rr="week" style="flex:0 0 100px"')+B(q+"teacher","老师",0,'data-rr="week"')+'<button class="x" data-a="delcls" data-i="'+r.i+'" aria-label="删除这节课">✕</button></div>'}).join("")+'<div class="add"><button class="p" data-a="addcls">＋ 新增一节课</button></div><p class="tip">课表会自动出现在「一周小花园」每一天里，上完课就打勾。时间用 24 小时制，例如 13:00。</p>');
+}
+function rWeek(){
+ var W=ds(WK),b="wk|"+W,ct=0,cd2=0,tot=0,dn=0,hrs=0,sl=0,sn=0,cu=0,days="",e6=new Date(WK.getFullYear(),WK.getMonth(),WK.getDate()+6);
+ function cnt(a){var r=prog(a);dn+=r[0];tot+=r[1]}
+ for(var i=0;i<7;i++){var d=new Date(WK.getFullYear(),WK.getMonth(),WK.getDate()+i),k=ds(d),p=b+"|days|"+i,mo=gp(p+"|mood"),wt=+gp(p+"|water")||0;cnt(gl(p+"|tasks"));var ch=dayCls(i,p);ct+=ch[1];cd2+=ch[2];
+  hrs+=parseFloat(gp(p+"|study"))||0;if(parseFloat(gp(p+"|sleep"))){sl+=parseFloat(gp(p+"|sleep"));sn++}cu+=wt;
+  days+='<div class="day'+(k===TODAY?' tdy':'')+'"><div class="dh"><b>'+DE[i]+' '+DN[i]+'</b><small>'+(d.getMonth()+1)+'/'+d.getDate()+'</small></div>'+B(p+"|focus","今日重点 ⭐")+ch[0]
+  +'<div class="moods" aria-label="心情">'+MO.map(function(e){return'<button class="mo'+(mo===e?' on':'')+'" data-a="mood" data-b="'+p+'|mood" data-v="'+e+'">'+e+'</button>'}).join("")+'</div>'
+  +'<div class="cups" aria-label="喝水">'+[1,2,3,4,5,6,7,8].map(function(n){return'<button class="cp'+(n<=wt?' on':'')+'" data-a="water" data-b="'+p+'|water" data-n="'+n+'">💧</button>'}).join("")+'</div>'
+  +'<div class="nums"><label>😴'+B(p+"|sleep","睡眠h",0,'inputmode="decimal"')+'</label><label>📖'+B(p+"|study","学习h",0,'inputmode="decimal"')+'</label></div>'+LST(p+"|tasks","小任务…",1)+'</div>';}
+ tot+=ct;dn+=cd2;cnt(gl(b+"|todos"));var v=tot?Math.round(dn/tot*100):0;
+ var hb=S.habits.map(function(h){return'<tr><td><span class="nm" contenteditable="true" spellcheck="false" data-r="hab" data-i="'+h.id+'">'+esc(h.n)+'</span></td>'+[0,1,2,3,4,5,6].map(function(i){var q=b+"|h|"+h.id+"|"+i,on=gp(q);return'<td><button class="hc'+(on?' on':'')+'" data-a="hb" data-b="'+q+'" aria-label="打卡">'+(on?"🌸":"")+'</button></td>'}).join("")+'<td><button class="x" data-a="delhab" data-i="'+h.id+'" aria-label="删除习惯">✕</button></td></tr>'}).join("");
+ card("week",'<div class="wnav"><button data-a="wnav" data-n="-1">‹ 上一周</button><b>'+WK.getFullYear()+'年 '+(WK.getMonth()+1)+'/'+WK.getDate()+' – '+(e6.getMonth()+1)+'/'+e6.getDate()+'</b><button data-a="wnav" data-n="0">回到本周</button><button data-a="wnav" data-n="1">下一周 ›</button></div>'
+ +'<div class="tr"><span>🌷 完成度</span><div class="bar" role="progressbar" aria-valuenow="'+v+'" aria-valuemin="0" aria-valuemax="100"><div class="fill" style="width:'+v+'%"></div></div><b>'+v+'%</b></div>'
+ +'<div class="stat"><span>🎓 上课 '+cd2+'/'+ct+' 节</span><span>✅ 全部 '+dn+'/'+tot+' 件</span><span>📖 学习 '+hrs+' 小时</span><span>😴 平均睡眠 '+(sn?(sl/sn).toFixed(1):"-")+' 小时</span><span>💧 喝水 '+cu+' 杯</span></div>'
+ +'<div class="grid2"><div><p class="lb">🎯 本周目标</p>'+LST(b+"|goals","本周最想做到…")+'</div><div><p class="lb">📌 本周待办（不限哪天）</p>'+LST(b+"|todos","加一件事…")+'</div></div>'
+ +'<div class="days">'+days+'</div><p class="lb">🌸 习惯打卡（点一下开花）</p><div class="wrap"><table><tr><th></th>'+"一二三四五六日".split("").map(function(c){return'<th>'+c+'</th>'}).join("")+'<th></th></tr>'+hb+'</table></div>'
+ +'<div class="add"><input type="text" id="nh" placeholder="新增习惯，例如 🍎 吃水果" data-enter="nhb"><button class="p" id="nhb" data-a="addhab">＋</button></div>'
+ +'<div class="grid2"><div><p class="lb">🌈 这周最开心的事</p>'+B(b+"|rv|a","",1)+'</div><div><p class="lb">🌧️ 可以做得更好的</p>'+B(b+"|rv|b","",1)+'</div></div><p class="lb">🚀 下周想做的事（🫧 周泡泡复盘）</p>'+B(b+"|rv|c","",1));
+}
+function rQ(){
+ var N=["Q1 🌸 春","Q2 ☀️ 夏","Q3 🍂 秋","Q4 ❄️ 冬"];
+ card("q",'<div class="q4">'+N.map(function(n,i){return'<div><p class="lb">'+n+'</p>'+B("q|"+Y+"|"+i,"这一季的目标和回顾…",1)+'</div>'}).join("")+'</div><p class="lb">🫧 '+Y+' 年度回顾</p>'+B("yr|"+Y,"这一年我成长了什么…",1));
+}
+var MOODS=[[0,"(｡•́︿•̀｡) 还没开始，先打勾第一个吧","M43 68q7-5 14 0"],[1,"(•̀ᴗ•́)و 出发啦，慢慢来","M43 64q7 5 14 0"],[34,"ヽ(•‿•)ノ 已经三分之一啦","M43 64q7 7 14 0"],[67,"✧٩(ˊᗜˋ*)و✧ 快到终点了！","M41 62q9 10 18 0"],[100,"🎉 全部搞定！","M40 61q10 13 20 0"]];
+function rStudy(){
+ var s=sub(),si=S.subs.indexOf(s),t=0,d=0;s.secs.forEach(function(x){var r=prog(x.items);d+=r[0];t+=r[1]});
+ var v=t?Math.round(d/t*100):0,m=MOODS[0];MOODS.forEach(function(x){if(v>=x[0]&&(v>0||x[0]===0))m=x});
+ card("study",'<div class="tabs">'+S.subs.map(function(x){return'<button class="tab'+(x.id===s.id?' on':'')+'" data-a="tab" data-id="'+x.id+'">'+esc(x.name)+'</button>'}).join("")+'</div>'
+ +'<div class="hero"><svg viewBox="0 0 100 100" aria-hidden="true"><ellipse cx="50" cy="90" rx="30" ry="6" fill="var(--line)"/><path d="M18 62C18 30 36 14 50 14s32 16 32 48c0 20-14 28-32 28S18 82 18 62Z" fill="#fff0f4" stroke="var(--pink)" stroke-width="4"/><circle cx="30" cy="62" r="7" fill="var(--pink)" opacity=".35"/><circle cx="70" cy="62" r="7" fill="var(--pink)" opacity=".35"/><circle cx="39" cy="52" r="4" fill="#5b3a4a"/><circle cx="61" cy="52" r="4" fill="#5b3a4a"/><path d="'+m[2]+'" fill="none" stroke="#5b3a4a" stroke-width="3" stroke-linecap="round"/><path d="M44 14q6-12 14-6" fill="none" stroke="var(--mint)" stroke-width="5" stroke-linecap="round"/></svg><div class="big"><div class="pct">'+v+'%</div><div class="mood">'+m[1]+' · '+d+'/'+t+'</div><div class="bar" role="progressbar" aria-valuenow="'+v+'" aria-valuemin="0" aria-valuemax="100"><div class="fill" style="width:'+v+'%"></div></div></div></div>'
+ +s.secs.map(function(x,j){var r=prog(x.items);return'<div class="sec"><div class="sec-h"><span class="nm" contenteditable="true" spellcheck="false" data-rp="subs|'+si+'|secs|'+j+'|t">'+esc(x.t)+'</span><small>'+r[0]+'/'+r[1]+'</small><button class="x" data-a="delsec" data-i="'+j+'" aria-label="删除小节">🗑</button></div><div class="mini"><i style="width:'+(r[1]?r[0]/r[1]*100:0)+'%"></i></div>'+LST("subs|"+si+"|secs|"+j+"|items","加一个小口…")+'</div>'}).join("")
+ +'<div class="add"><input type="text" id="nsec" placeholder="新增小节（例如：第六节）" data-enter="nsecb"><button class="p" id="nsecb" data-a="addsec">加小节</button></div>'
+ +'<p class="lb">这个课程盒的名字</p><input type="text" data-b="subs|'+si+'|name" data-rr="study" value="'+esc(s.name)+'">'
+ +'<div class="add"><input type="text" id="nsub" placeholder="新增课程盒（例如：病理学）" data-enter="nsubb"><button class="p" id="nsubb" data-a="addsub">加课程</button><button data-a="delsub">删除当前</button></div>');
+}
+function rTodo(){card("todo",LST("todos","今天要做什么？")+'<div class="add"><button data-a="cleartodo">🧹 清掉已完成</button></div>')}
+function rEv(){
+ var t0=new Date(NOW.getFullYear(),NOW.getMonth(),NOW.getDate()),ev=S.events.slice().sort(function(a,b){return a.d<b.d?-1:a.d>b.d?1:0});
+ card("ev",ev.map(function(e){var p=e.d.split("-"),n=Math.round((pd(e.d)-t0)/864e5);return'<div class="ev'+(n<0?' past':n<=7?' soon':'')+'"><div class="dd"><b>'+(n<0?"✓":n===0?"今天":n)+'</b><span>'+(n>0?"天后":n===0?"":"已过")+'</span></div><div><h3>'+esc(e.e)+' '+esc(e.t)+'</h3><p>'+p[1]+'月'+p[2]+'日'+(e.time?' · '+esc(e.time):'')+'</p></div><button class="x" data-a="delev" data-i="'+e.id+'" aria-label="删除">✕</button></div>'}).join("")
+ +'<div class="evadd"><input type="date" id="ed" aria-label="日期"><input type="text" id="et" placeholder="时间（可不填）" style="max-width:120px"><input type="text" id="en" placeholder="名称，例如 病理 quiz" data-enter="eb"><button class="p" id="eb" data-a="addev">＋</button></div>');
+}
+function rAw(){
+ card("aw",S.aw.map(function(a,i){return'<div class="awr"><input type="date" data-b="aw|'+i+'|d" data-rr="cal" value="'+esc(a.d||"")+'" aria-label="日期">'+B("aw|"+i+"|a","今天的自己好棒呀 👍")+B("aw|"+i+"|b","记录一下今日…")+'<button class="x" data-a="delaw" data-i="'+i+'" aria-label="删除">✕</button></div>'}).join("")+'<div class="add"><button class="p" data-a="addaw">＋ 写今天的小确幸</button></div>');
+}
+function rVis(){
+ card("vis",'<div class="vis">'+S.vis.map(function(v,i){return'<div class="st s'+(i%5)+'"><button class="x" data-a="delvis" data-i="'+v.id+'" aria-label="删除">✕</button><b>'+esc(v.e)+'</b><span class="nm" contenteditable="true" spellcheck="false" data-r="vis" data-i="'+v.id+'">'+esc(v.t)+'</span></div>'}).join("")+'</div><div class="add"><input type="text" id="ve" placeholder="🌟" style="max-width:64px;flex:none"><input type="text" id="vt" placeholder="我想要…" data-enter="vb"><button class="p" id="vb" data-a="addvis">＋</button></div>');
+}
+var ACC=["#ff8fab","#c9a7ff","#7fb7ff","#6fd1a8","#ffb067"],RS=0;
+function rSet(){
+ $("c-notes").hidden=!!S.hide.notes;$("c-pomo").hidden=!!S.hide.pomo;
+ card("set",'<div class="set">'+Object.keys(TT).filter(function(k){return k!=="set"}).map(function(k){return'<button class="chip'+(S.hide[k]?'':' on')+'" data-a="hide" data-k="'+k+'">'+TT[k]+'</button>'}).join("")+'</div><div class="set"><span style="font-size:14px">主题色</span>'+ACC.map(function(c){return'<button class="sw'+(c===S.accent?' on':'')+'" style="background:'+c+'" data-a="acc" data-c="'+c+'" aria-label="主题色"></button>'}).join("")+'<button class="chip" data-a="dark">🌙 深浅切换</button><button class="chip" data-a="em" data-noed>'+(EM?"✅ 改字中（点我结束）":"✏️ 改字模式")+'</button><button class="chip" data-a="reset">🧹 全部重置</button></div>');
+ document.documentElement.style.setProperty("--pink",S.accent);
+}
+function all(){skin($("ban"));$("sl").textContent=S.slogan;$("yr").textContent=Y;rCal();rTime();rNav();rYg();rMg();rCls();rWeek();rQ();rStudy();rTodo();rEv();rAw();rVis();rSet();["cal","time","nav","yg","mg","cls","week","q","study","todo","ev","aw","vis"].forEach(function(k){$("c-"+k).hidden=!!S.hide[k]})}
+
+/* pomodoro + notes */
+var T={mode:"w",left:S.pomo.w*60,run:null};
+function fmt(n){return String(Math.floor(n/60)).padStart(2,"0")+":"+String(n%60).padStart(2,"0")}
+function rPomo(){var c=$("c-pomo"),d=DC.pomo;c.innerHTML='<p class="ct">'+TT.pomo+'</p><p class="tip" data-noed>已完成 '+S.pomo.c+' 个小番茄</p><div class="clock" id="clk">'+fmt(T.left)+'</div><div class="mood">'+(T.mode==="w"?"专心复习中 📖":"休息一下 🍵")+'</div><div class="row"><button class="p" data-a="pstart">'+(T.run?"暂停":"开始")+'</button><button data-a="preset">重置</button><button data-a="pskip">切换</button></div><div class="row">专注 <input type="number" min="1" max="120" id="pw" value="'+S.pomo.w+'" aria-label="专注分钟"> 分 休息 <input type="number" min="1" max="60" id="pb2" value="'+S.pomo.b+'" aria-label="休息分钟"> 分</div><div class="deco"><span class="em">'+d[2]+'</span><span>'+d[0]+' '+d[1]+'</span></div>';c.hidden=!!S.hide.pomo;skin(c)}
+function tick(){T.left--;if(T.left<=0){if(T.mode==="w"){S.pomo.c++;save()}T.mode=T.mode==="w"?"b":"w";T.left=(T.mode==="w"?S.pomo.w:S.pomo.b)*60;if(T.mode==="b")confetti();rPomo()}else{var c=$("clk");if(c)c.textContent=fmt(T.left)}}
+function confetti(){var b=$("pop"),em=["🌸","⭐","🍡","💖","✨"];for(var i=0;i<26;i++){var s=document.createElement("span");s.textContent=em[i%5];s.style.left=Math.random()*100+"%";s.style.animationDelay=Math.random()*.8+"s";b.appendChild(s)}setTimeout(function(){b.innerHTML=""},3500)}
+function rNotes(){var c=$("c-notes"),d=DC.notes;c.innerHTML='<p class="ct">'+TT.notes+'</p><textarea id="notes" style="min-height:150px" placeholder="例如：太阳中风 vs 太阳伤寒 的区别…"></textarea><div class="deco"><span class="em">'+d[2]+'</span><span>'+d[0]+' '+d[1]+'</span></div>';skin(c);$("notes").value=S.notes||"";$("notes").oninput=function(){S.notes=this.value;save()}}
+
+/* events */
+var RR={study:function(){rStudy()},cal:function(){rCal()},week:function(){rWeek()}};
+function find(a,id){return a.find(function(x){return x.id===id})}
+document.addEventListener("click",function(e){
+ if(e.target.closest("[data-r],[data-rp]"))e.preventDefault();
+ if(EM&&e.target.closest(".chip,.wnav button")&&!e.target.closest("[data-a=em]")){e.preventDefault();return}
+ var b=e.target.closest("[data-a]");if(!b||b.type==="checkbox")return;e.preventDefault();
+ var a=b.dataset.a,D=b.dataset,s=sub(),si=S.subs.indexOf(s),v,fid=null;
+ if(a==="cm"){CM=new Date(CM.getFullYear(),CM.getMonth()+ +D.n,1);rCal();rMg();return}
+ else if(a==="cday"){WK=mon(pd(D.d));rCal();rWeek();$("c-week").hidden=false;$("c-week").scrollIntoView({behavior:"smooth"});return}
+ else if(a==="wnav"){WK=D.n==="0"?mon(NOW):new Date(WK.getFullYear(),WK.getMonth(),WK.getDate()+7*+D.n);rCal();rWeek();return}
+ else if(a==="go"){S.hide[D.k]=false;save();var c=$("c-"+D.k);c.hidden=false;rSet();c.scrollIntoView({behavior:"smooth"});return}
+ else if(a==="la"){var q=pid(D.p);v=$("in-"+q).value.trim();if(!v)return;var it=li(v),tmE=$("tm-"+q);if(tmE&&tmE.value.trim())it.tm=tmE.value.trim();gl(D.p).push(it);fid="in-"+q}
+ else if(a==="ld"){var A=gl(D.p),ix=A.findIndex(function(x){return x.id===D.i});if(ix>-1)A.splice(ix,1)}
+ else if(a==="mood"||a==="hb"){sp(D.b,gp(D.b)===(D.v||true)?"":(D.v||true))}
+ else if(a==="water"){sp(D.b,(+gp(D.b)||0)===+D.n?+D.n-1:+D.n)}
+ else if(a==="addhab"){v=$("nh").value.trim();if(!v)return;S.habits.push({id:uid(),n:v});fid="nh"}
+ else if(a==="delhab"){S.habits=S.habits.filter(function(x){return x.id!==D.i})}
+ else if(a==="tab"){S.cur=D.id}
+ else if(a==="addsub"){v=$("nsub").value.trim();if(!v)return;var n={id:uid(),name:v,secs:[mk("第一节",[])]};S.subs.push(n);S.cur=n.id}
+ else if(a==="delsub"){if(S.subs.length<2)return;S.subs.splice(si,1);S.cur=S.subs[0].id}
+ else if(a==="addsec"){v=$("nsec").value.trim();if(!v)return;s.secs.push(mk(v,[]));fid="nsec"}
+ else if(a==="delsec"){s.secs.splice(+D.i,1)}
+ else if(a==="addcls"){S.classes.push({id:uid(),dow:0,s:"09:00",e:"10:00",code:"",name:"新课程",teacher:"",room:""})}
+ else if(a==="delcls"){S.classes.splice(+D.i,1)}
+ else if(a==="cleartodo"){S.todos=S.todos.filter(function(x){return!x.d})}
+ else if(a==="addev"){v=$("en").value.trim();if(!v||!$("ed").value)return;S.events.push({id:uid(),d:$("ed").value,time:$("et").value.trim(),t:v,e:"⭐"})}
+ else if(a==="delev"){S.events=S.events.filter(function(x){return x.id!==D.i})}
+ else if(a==="addaw"){S.aw.unshift({id:uid(),d:TODAY,a:"",b:""})}
+ else if(a==="delaw"){S.aw.splice(+D.i,1)}
+ else if(a==="addvis"){v=$("vt").value.trim();if(!v)return;S.vis.push({id:uid(),e:$("ve").value.trim()||"🌟",t:v});fid="vt"}
+ else if(a==="delvis"){S.vis=S.vis.filter(function(x){return x.id!==D.i})}
+ else if(a==="hide"){S.hide[D.k]=!S.hide[D.k]}
+ else if(a==="em"){EM=!EM;all();rPomo();rNotes();return}
+ else if(a==="acc"){S.accent=D.c}
+ else if(a==="dark"){var r=document.documentElement,d=r.dataset.theme==="dark"||(!r.dataset.theme&&matchMedia("(prefers-color-scheme:dark)").matches);r.dataset.theme=d?"light":"dark";return}
+ else if(a==="reset"){if(!RS){RS=1;b.textContent="再点一次确认 🥺";return}RS=0;S=def();T={mode:"w",left:25*60,run:null};rPomo();rNotes()}
+ else if(a==="pstart"){if(T.run){clearInterval(T.run);T.run=null}else T.run=setInterval(tick,1000);rPomo();return}
+ else if(a==="preset"){T.left=(T.mode==="w"?S.pomo.w:S.pomo.b)*60;rPomo();return}
+ else if(a==="pskip"){T.mode=T.mode==="w"?"b":"w";T.left=(T.mode==="w"?S.pomo.w:S.pomo.b)*60;rPomo();return}
+ save();all();if(fid&&$(fid))$(fid).focus();
+});
+document.addEventListener("change",function(e){
+ var t=e.target,D=t.dataset;
+ if(D.a==="cd"){sp(D.b,t.checked);save();rWeek()}
+ else if(D.a==="lt"){var it=find(gl(D.p),D.i);it.d=t.checked;save();var r=prog(gl(D.p));all();if(t.checked&&r[0]===r[1])confetti()}
+ else if(t.id==="pw"||t.id==="pb2"){var n=Math.max(1,Math.min(120,+t.value||25));if(t.id==="pw")S.pomo.w=n;else S.pomo.b=n;save();if(!T.run)T.left=(T.mode==="w"?S.pomo.w:S.pomo.b)*60;rPomo()}
+ else if(D.rr){RR[D.rr]();if(D.rr==="study")rSet()}
+});
+document.addEventListener("input",function(e){var t=e.target;if(t.dataset&&t.dataset.b&&t.tagName!=="BUTTON"){sp(t.dataset.b,t.value);save()}});
+document.addEventListener("focusout",function(e){
+ var t=e.target,D=t.dataset;if(D&&D.o!==undefined&&t.isContentEditable){var v0=t.textContent.trim();if(v0&&v0!==D.o)S.lbl[D.o]=v0;else{delete S.lbl[D.o];t.textContent=D.o}save();document.querySelectorAll("[data-o]").forEach(function(x){if(x!==t&&x.dataset.o===D.o)x.textContent=S.lbl[D.o]||D.o});return}
+ if(!D||!(D.r||D.rp))return;var v=t.textContent.trim();
+ if(D.rp){if(v)sp(D.rp,v);else t.textContent=gp(D.rp)||""}
+ else{var o=D.r==="l"?find(gl(D.p),D.i):D.r==="hab"?find(S.habits,D.i):find(S.vis,D.i),k=D.r==="hab"?"n":"t";if(v)o[k]=v;else t.textContent=o[k]}
+ save();
+});
+document.addEventListener("keydown",function(e){
+ if(e.key!=="Enter")return;var t=e.target;
+ if(t.dataset&&t.dataset.enter){e.preventDefault();$(t.dataset.enter).click()}
+ else if(t.dataset&&(t.dataset.r||t.dataset.rp||t.dataset.o!==undefined)){e.preventDefault();t.blur()}
+});
+all();rPomo();rNotes();setInterval(rTime,60000);
+</script>
+</body>
+</html>
