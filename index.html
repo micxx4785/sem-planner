@@ -123,6 +123,73 @@ input, textarea, select, button {
 @keyframes studySpark{0%{opacity:0;transform:translate(0,10px) scale(.4) rotate(-20deg)}25%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.35) rotate(35deg)}}
 @media(prefers-reduced-motion:reduce){.study-progress .fill:after,.sec.is-done,.study-complete,.study-spark{animation:none}}
 
+
+/* Subtopics belong directly to each checklist item */
+.item-wrap{margin:4px 0 8px}
+.item-children{margin:0 12px 4px 42px;padding:5px 10px;border-left:3px solid #ffd2df;background:linear-gradient(90deg,rgba(255,235,241,.78),rgba(255,255,255,.3));border-radius:0 12px 12px 0}
+.child-line{display:flex;align-items:center;gap:8px;padding:4px 0;color:var(--soft);font-size:.94em}
+.child-line>span:first-child{color:#f28eae}
+.child-text{flex:1;min-width:0}
+.child-add{display:flex;gap:6px;align-items:center;margin:2px 10px 5px 42px}
+.child-add input{flex:1;min-width:0;min-height:34px;padding:6px 10px;border:1px dashed #f5b7ca;border-radius:12px;background:#fff5f8;color:inherit;font:inherit;font-size:.88em}
+.child-add .chip{white-space:nowrap;padding:6px 10px;font-size:.82em}
+
+
+/* ===== Study Cake: kawaii decoration pack ===== */
+#c-study{position:relative;isolation:isolate;overflow:hidden;background:
+ radial-gradient(circle at 8% 8%,rgba(255,211,226,.30) 0 3px,transparent 4px),
+ radial-gradient(circle at 92% 16%,rgba(255,220,164,.35) 0 4px,transparent 5px),
+ linear-gradient(145deg,rgba(255,248,251,.96),rgba(255,255,255,.98) 48%,rgba(242,255,249,.8))}
+#c-study:before,#c-study:after{content:"";position:absolute;z-index:-1;pointer-events:none;border-radius:50%;opacity:.65}
+#c-study:before{width:170px;height:170px;right:-70px;top:80px;background:radial-gradient(circle,#ffe0ec 0 2px,transparent 3px);background-size:22px 22px;animation:dotFloat 14s linear infinite}
+#c-study:after{width:150px;height:150px;left:-75px;bottom:70px;background:radial-gradient(circle,#c9f1df 0 2px,transparent 3px);background-size:19px 19px;animation:dotFloat 18s linear infinite reverse}
+@keyframes dotFloat{to{transform:translate(18px,-22px) rotate(25deg)}}
+.study-deco{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:3px 2px 12px;padding:9px 13px;border:1px dashed #ffd0df;border-radius:18px;background:linear-gradient(90deg,#fff0f5,#fff9e9,#effbf5);color:#a9788d;font-size:13px}
+.study-deco .sticker{display:inline-block;font-size:23px;filter:drop-shadow(0 3px 2px rgba(180,120,145,.15));animation:stickerBob 2.5s ease-in-out infinite}
+.study-deco .sticker:nth-child(2){animation-delay:.25s}.study-deco .sticker:nth-child(3){animation-delay:.5s}.study-deco .sticker:nth-child(4){animation-delay:.75s}
+@keyframes stickerBob{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-6px) rotate(7deg)}}
+#c-study .hero{position:relative;margin:10px 0 18px;padding:16px 13px;border:2px solid #ffe0e9;border-radius:25px;background:linear-gradient(125deg,#fff1f6,#fffaf0 55%,#effbf5);box-shadow:0 7px 18px rgba(220,151,177,.10);overflow:hidden}
+#c-study .hero:after{content:"✦  ˚  🍓  ˚  ✧";position:absolute;right:13px;top:7px;color:#e9a5ba;font-size:14px;letter-spacing:5px;animation:twinkle 2s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.45;transform:scale(.92)}50%{opacity:1;transform:scale(1.08)}}
+#c-study .hero svg{filter:drop-shadow(0 5px 4px rgba(230,140,170,.15));animation:mascotFloat 3s ease-in-out infinite;transform-origin:50% 80%}
+@keyframes mascotFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-7px) rotate(2deg)}}
+#c-study .pct{font-size:clamp(38px,7vw,54px);text-shadow:2px 3px 0 #ffe2eb;letter-spacing:-1px}
+#c-study .mood{font-size:14px}
+#c-study .study-progress{height:29px;border:3px solid #fff;background:repeating-linear-gradient(135deg,#ffe4ed 0 12px,#fff0f5 12px 24px);box-shadow:0 3px 0 #f8d4e0, inset 0 2px 5px rgba(210,140,165,.12)}
+#c-study .study-progress .fill{background:linear-gradient(90deg,#ff91b2,#ffb4c9 45%,#ffd18f 75%,#a9e8d0);box-shadow:0 0 12px rgba(255,143,177,.3)}
+#c-study .study-progress .fill:before{content:"♡";position:absolute;right:7px;top:-3px;color:white;font-size:18px;text-shadow:0 1px 3px #e68eac;z-index:2;animation:heartBeat 1.1s ease-in-out infinite}
+@keyframes heartBeat{0%,100%{transform:scale(1)}35%{transform:scale(1.28)}}
+#c-study .sec{position:relative;margin:14px 0;padding:13px 13px 11px;border:2px solid #f9dce6;border-radius:22px;background:rgba(255,255,255,.82);box-shadow:0 4px 12px rgba(208,146,168,.07);transition:transform .25s,box-shadow .25s}
+#c-study .sec:nth-of-type(odd){border-color:#d8f1e7}
+#c-study .sec:before{content:"🌷";position:absolute;right:13px;top:-12px;padding:1px 5px;background:#fff;border-radius:12px;font-size:17px;animation:stickerBob 3.2s ease-in-out infinite}
+#c-study .sec:nth-of-type(3n):before{content:"🍓"}#c-study .sec:nth-of-type(3n + 1):before{content:"🧁"}#c-study .sec:nth-of-type(3n + 2):before{content:"🦋"}
+#c-study .sec-h{padding-right:38px;min-height:30px}
+#c-study .sec-h .nm{font-weight:800}
+#c-study .sec .mini{height:15px;margin:8px 0 10px;background:#f0fbf6;border:2px solid white;box-shadow:0 2px 0 #d8f0e6}
+#c-study .sec .mini i{border-radius:99px;background:linear-gradient(90deg,#9ee5cd,#b9eddc,#ffe1a8);transition:width .65s cubic-bezier(.2,.8,.2,1)}
+#c-study .item{border-radius:14px;padding:6px 7px;transition:background .2s,transform .2s}
+#c-study .item:has(input:checked){background:linear-gradient(90deg,#effaf4,#fff7fa)}
+#c-study .item input[type=checkbox]{accent-color:#8ed9bd}
+#c-study .item .box{border-radius:50%;background:#e9f8f1;border:2px solid #b8ead6;color:#58a989;transition:transform .25s}
+#c-study .item input:checked+.box{animation:checkPop .4s cubic-bezier(.2,1.8,.4,1);background:#a8e6cf;color:#28775a}
+@keyframes checkPop{0%{transform:scale(.65) rotate(-20deg)}70%{transform:scale(1.3) rotate(12deg)}100%{transform:scale(1) rotate(0)}}
+#c-study .child-add input{background:#fff7fa;border-color:#f5d4df}
+#c-study .child-add .chip{background:#fff0f5;border-color:#ffd5e2;color:#b66d88}
+#c-study .topic-block{background:linear-gradient(110deg,#fff3f7,#f2fcf7);border-left-color:#f4b8cc;border-radius:0 17px 17px 0}
+#c-study .tabs{gap:8px;margin-bottom:10px}
+#c-study .tab{box-shadow:0 3px 0 rgba(225,165,185,.12);transition:transform .2s}
+#c-study .tab:active,#c-study button:active{transform:scale(.96)}
+#c-study .tab.on{background:linear-gradient(120deg,#ff8fab,#ffb3c7);box-shadow:0 4px 0 #f5d1dc;color:white}
+#c-study .add{padding:8px;background:rgba(255,241,246,.65);border:1px dashed #f2c7d5;border-radius:18px}
+.study-finish-banner{margin:12px 0;padding:12px;border-radius:18px;text-align:center;background:linear-gradient(100deg,#fff0f5,#fff9e9,#effbf5);color:#a76c84;border:1px solid #f8d9e4;animation:bannerIn .55s cubic-bezier(.2,1.4,.4,1)}
+.study-finish-banner b{display:block;font-size:18px;color:#e77e9e}
+@keyframes bannerIn{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.study-floating{position:absolute;pointer-events:none;z-index:0;opacity:.7;animation:floatAcross 8s ease-in-out infinite}
+.study-floating.f1{top:155px;left:8px}.study-floating.f2{top:360px;right:13px;animation-delay:1.3s}.study-floating.f3{bottom:95px;left:20px;animation-delay:2.1s}
+@keyframes floatAcross{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-13px) rotate(10deg)}}
+#c-study .sec.is-done{border-color:#aee8d1;box-shadow:0 5px 18px rgba(125,205,170,.18)}
+@media(prefers-reduced-motion:reduce){#c-study *,.study-deco .sticker{animation:none!important;transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -230,7 +297,7 @@ function skin(r){r.querySelectorAll(SK).forEach(function(el){if(el.children.leng
 function card(k,body){var c=$("c-"+k),d=DC[k];c.innerHTML='<p class="ct">'+TT[k]+'</p>'+body+'<div class="deco"><span class="em">'+d[2]+'</span><span>'+d[0]+' '+d[1]+'</span></div>';c.hidden=!!S.hide[k];skin(c)}
 function B(p,ph,ta,ex){var v=gp(p);v=v==null?"":v;return ta?'<textarea data-b="'+p+'" placeholder="'+ph+'">'+esc(v)+'</textarea>':'<input type="text" data-b="'+p+'" placeholder="'+ph+'" value="'+esc(v)+'" '+(ex||"")+'>'}
 function LST(p,ph,tm){var a=gl(p).slice(),q=pid(p);if(tm)a.sort(function(x,y){return(x.tm||"99")<(y.tm||"99")?-1:1});
- return a.map(function(i){return'<label class="item"><input type="checkbox" data-a="lt" data-p="'+p+'" data-i="'+i.id+'"'+(i.d?' checked':'')+'><span class="box">✓</span>'+(i.tm?'<span class="tm">'+esc(i.tm)+'</span>':'')+'<span class="nm" contenteditable="true" spellcheck="false" data-r="l" data-p="'+p+'" data-i="'+i.id+'">'+esc(i.t)+'</span><button class="x" data-a="ld" data-p="'+p+'" data-i="'+i.id+'" aria-label="删除">✕</button></label>'}).join("")
+ return a.map(function(i){i.children=i.children||[];return'<div class="item-wrap"><label class="item"><input type="checkbox" data-a="lt" data-p="'+p+'" data-i="'+i.id+'"'+(i.d?' checked':'')+'><span class="box">✓</span>'+(i.tm?'<span class="tm">'+esc(i.tm)+'</span>':'')+'<span class="nm" contenteditable="true" spellcheck="false" data-r="l" data-p="'+p+'" data-i="'+i.id+'">'+esc(i.t)+'</span><button class="x" data-a="ld" data-p="'+p+'" data-i="'+i.id+'" aria-label="删除">✕</button></label>'+(i.children.length?'<div class="item-children">'+i.children.map(function(c,k){return'<div class="child-line"><span>↳</span><span class="child-text">'+esc(c)+'</span><button class="x" data-a="delchild" data-p="'+p+'" data-i="'+i.id+'" data-k="'+k+'" aria-label="删除子标题">✕</button></div>'}).join("")+'</div>':'')+'<div class="child-add"><input type="text" id="child-'+q+'-'+i.id+'" placeholder="在「'+esc(i.t)+'」下面添加 subtopic…" data-enter="childbtn-'+q+'-'+i.id+'"><button class="chip" id="childbtn-'+q+'-'+i.id+'" data-a="addchild" data-p="'+p+'" data-i="'+i.id+'">＋ Subtopic</button></div></div>'}).join("")
  +'<div class="add">'+(tm?'<input type="text" class="tmi" id="tm-'+q+'" placeholder="时间" aria-label="时间">':'')+'<input type="text" id="in-'+q+'" placeholder="'+ph+'" data-enter="ab-'+q+'"><button class="p" id="ab-'+q+'" data-a="la" data-p="'+p+'">＋</button></div>'}
 function prog(a){var t=a.length,d=a.filter(function(i){return i.d}).length;return[d,t]}
 
@@ -288,9 +355,9 @@ var MOODS=[[0,"(｡•́︿•̀｡) 还没开始，先打勾第一个吧","M43 
 function rStudy(){
  var s=sub(),si=S.subs.indexOf(s),t=0,d=0;s.secs.forEach(function(x){var allItems=(x.items||[]).slice();(x.topics||[]).forEach(function(g){allItems=allItems.concat(g.items||[])});var r=prog(allItems);d+=r[0];t+=r[1]});
  var v=t?Math.round(d/t*100):0,m=MOODS[0];MOODS.forEach(function(x){if(v>=x[0]&&(v>0||x[0]===0))m=x});
- card("study",'<div class="tabs">'+S.subs.map(function(x){return'<button class="tab'+(x.id===s.id?' on':'')+'" data-a="tab" data-id="'+x.id+'">'+esc(x.name)+'</button>'}).join("")+'</div>'
+ card("study",'<div class="study-deco"><span class="sticker">🍓</span><span class="sticker">🧁</span><b>今天也要甜甜地学习！</b><span class="sticker">🐰</span><span class="sticker">🌷</span></div><div class="tabs">'+S.subs.map(function(x){return'<button class="tab'+(x.id===s.id?' on':'')+'" data-a="tab" data-id="'+x.id+'">'+esc(x.name)+'</button>'}).join("")+'</div>'
  +'<div class="hero"><svg viewBox="0 0 100 100" aria-hidden="true"><ellipse cx="50" cy="90" rx="30" ry="6" fill="var(--line)"/><path d="M18 62C18 30 36 14 50 14s32 16 32 48c0 20-14 28-32 28S18 82 18 62Z" fill="#fff0f4" stroke="var(--pink)" stroke-width="4"/><circle cx="30" cy="62" r="7" fill="var(--pink)" opacity=".35"/><circle cx="70" cy="62" r="7" fill="var(--pink)" opacity=".35"/><circle cx="39" cy="52" r="4" fill="#5b3a4a"/><circle cx="61" cy="52" r="4" fill="#5b3a4a"/><path d="'+m[2]+'" fill="none" stroke="#5b3a4a" stroke-width="3" stroke-linecap="round"/><path d="M44 14q6-12 14-6" fill="none" stroke="var(--mint)" stroke-width="5" stroke-linecap="round"/></svg><div class="big"><div class="pct">'+v+'%</div><div class="mood">'+m[1]+' · '+d+'/'+t+'</div><div class="study-progress" role="progressbar" aria-valuenow="'+v+'" aria-valuemin="0" aria-valuemax="100"><div class="fill" style="width:'+v+'%"></div></div></div></div>'
- +s.secs.map(function(x,j){x.topics=x.topics||[];var flat=(x.items||[]).slice();x.topics.forEach(function(g){flat=flat.concat(g.items||[])});var r=prog(flat),done=r[1]>0&&r[0]===r[1];return'<div class="sec'+(done?' is-done':'')+'"><div class="sec-h"><span class="nm" contenteditable="true" spellcheck="false" data-rp="subs|'+si+'|secs|'+j+'|t">'+esc(x.t)+'</span><small>'+r[0]+'/'+r[1]+'</small><button class="x" data-a="delsec" data-i="'+j+'" aria-label="删除小节">🗑</button></div><div class="mini"><i style="width:'+(r[1]?r[0]/r[1]*100:0)+'%"></i></div>'+LST("subs|"+si+"|secs|"+j+"|items","加一个小口…") + x.topics.map(function(g,k){var gr=prog(g.items||[]);return'<div class="topic-block"><div class="topic-head"><span>🌷</span><span class="topic-name" contenteditable="true" spellcheck="false" data-rp="subs|'+si+'|secs|'+j+'|topics|'+k+'|t">'+esc(g.t)+'</span><small>'+gr[0]+'/'+gr[1]+'</small><button class="x" data-a="deltopic" data-i="'+j+'" data-k="'+k+'" aria-label="删除小标题">✕</button></div>'+LST("subs|"+si+"|secs|"+j+"|topics|"+k+"|items","添加这个小标题下的任务…")+'</div>'}).join("") + '<div class="topic-add"><input type="text" id="ntopic-'+j+'" placeholder="新增 subtopic，例如：太阳病提纲补充" data-enter="topicbtn-'+j+'"><button class="chip" id="topicbtn-'+j+'" data-a="addtopic" data-i="'+j+'">＋ 添加小标题</button></div></div>'}).join("")
+ +(v===100?'<div class="study-finish-banner">🎉 🌸 🧁 <b>学习小蛋糕全部完成！</b>今天的努力都变成闪闪发光的小星星啦！</div>':'') +s.secs.map(function(x,j){x.topics=x.topics||[];var flat=(x.items||[]).slice();x.topics.forEach(function(g){flat=flat.concat(g.items||[])});var r=prog(flat),done=r[1]>0&&r[0]===r[1];return'<div class="sec'+(done?' is-done':'')+'"><div class="sec-h"><span class="nm" contenteditable="true" spellcheck="false" data-rp="subs|'+si+'|secs|'+j+'|t">'+esc(x.t)+'</span><small>'+r[0]+'/'+r[1]+'</small><button class="x" data-a="delsec" data-i="'+j+'" aria-label="删除小节">🗑</button></div><div class="mini"><i style="width:'+(r[1]?r[0]/r[1]*100:0)+'%"></i></div>'+LST("subs|"+si+"|secs|"+j+"|items","加一个小口…") + x.topics.map(function(g,k){var gr=prog(g.items||[]);return'<div class="topic-block"><div class="topic-head"><span>🌷</span><span class="topic-name" contenteditable="true" spellcheck="false" data-rp="subs|'+si+'|secs|'+j+'|topics|'+k+'|t">'+esc(g.t)+'</span><small>'+gr[0]+'/'+gr[1]+'</small><button class="x" data-a="deltopic" data-i="'+j+'" data-k="'+k+'" aria-label="删除小标题">✕</button></div>'+LST("subs|"+si+"|secs|"+j+"|topics|"+k+"|items","添加这个小标题下的任务…")+'</div>'}).join("") + '<div class="topic-add"><input type="text" id="ntopic-'+j+'" placeholder="新增 subtopic，例如：太阳病提纲补充" data-enter="topicbtn-'+j+'"><button class="chip" id="topicbtn-'+j+'" data-a="addtopic" data-i="'+j+'">＋ 添加小标题</button></div></div>'}).join("")
  +'<div class="add"><input type="text" id="nsec" placeholder="新增小节（例如：第六节）" data-enter="nsecb"><button class="p" id="nsecb" data-a="addsec">加小节</button></div>'
  +'<p class="lb">这个课程盒的名字</p><input type="text" data-b="subs|'+si+'|name" data-rr="study" value="'+esc(s.name)+'">'
  +'<div class="add"><input type="text" id="nsub" placeholder="新增课程盒（例如：病理学）" data-enter="nsubb"><button class="p" id="nsubb" data-a="addsub">加课程</button><button data-a="delsub">删除当前</button></div>');
@@ -349,6 +416,8 @@ document.addEventListener("click",function(e){
  else if(a==="delsec"){s.secs.splice(+D.i,1)}
  else if(a==="addtopic"){var sec=s.secs[+D.i],topicInput=$("ntopic-"+D.i);v=topicInput&&topicInput.value.trim();if(!v)return;sec.topics=sec.topics||[];sec.topics.push({id:uid(),t:v,items:[]});fid="ntopic-"+D.i}
  else if(a==="deltopic"){var sec=s.secs[+D.i];if(sec&&sec.topics)sec.topics.splice(+D.k,1)}
+ else if(a==="addchild"){var parent=find(gl(D.p),D.i),childInput=$("child-"+pid(D.p)+"-"+D.i);v=childInput&&childInput.value.trim();if(!v||!parent)return;parent.children=parent.children||[];parent.children.push(v);fid="child-"+pid(D.p)+"-"+D.i}
+ else if(a==="delchild"){var parent=find(gl(D.p),D.i);if(parent&&parent.children)parent.children.splice(+D.k,1)}
  else if(a==="addcls"){S.classes.push({id:uid(),dow:0,s:"09:00",e:"10:00",code:"",name:"新课程",teacher:"",room:""})}
  else if(a==="delcls"){S.classes.splice(+D.i,1)}
  else if(a==="cleartodo"){S.todos=S.todos.filter(function(x){return!x.d})}
