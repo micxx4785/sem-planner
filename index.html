@@ -100,6 +100,29 @@ input, textarea, select, button {
   font-family: "Times New Roman", "Kaiti SC", "STKaiti", "KaiTi", "楷体", serif !important;
 }
 
+
+/* Cute study progress + completion celebration */
+.study-progress{height:25px;border-radius:999px;background:linear-gradient(90deg,#ffe8ef,#fff1d9);overflow:hidden;margin-top:10px;border:2px solid #ffe0e9;box-shadow:inset 0 2px 4px rgba(255,143,171,.10)}
+.study-progress .fill{height:100%;position:relative;overflow:hidden;background:linear-gradient(90deg,#ff9ab7,#ffb7cb 55%,#ffd1a4);border-radius:999px;box-shadow:0 2px 7px rgba(255,143,171,.28)}
+.study-progress .fill:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.65) 48%,transparent 72%);transform:translateX(-100%);animation:progressShine 2.8s ease-in-out infinite}
+@keyframes progressShine{to{transform:translateX(100%)}}
+.sec .mini{height:13px;background:linear-gradient(90deg,#effaf5,#e4f8ef);border:1px solid #d8f3e8;border-radius:99px;padding:1px}
+.sec .mini i{background:linear-gradient(90deg,#9be5cc,#b7efd9);position:relative}
+.sec .mini i:after{content:"✦";position:absolute;right:4px;top:-4px;color:#fff;font-size:10px}
+.topic-block{margin:10px 4px 8px 18px;padding:9px 11px 7px;border-left:3px solid #ffd1df;border-radius:0 15px 15px 0;background:linear-gradient(100deg,rgba(255,232,239,.62),rgba(255,255,255,.15))}
+.topic-head{display:flex;align-items:center;gap:7px;font-weight:700;color:var(--soft);margin-bottom:5px}
+.topic-head .topic-name{flex:1;min-width:0}.topic-head small{font-size:11px;color:var(--soft)}
+.topic-add{display:flex;gap:6px;align-items:center;margin:7px 0 2px 18px}.topic-add input{flex:1;min-width:0}
+.sec.is-done{background:linear-gradient(120deg,rgba(168,230,207,.14),rgba(255,240,246,.42));border-radius:18px;padding:12px 10px;border-top-color:#b9ead8;animation:doneGlow 1.2s ease}
+.sec.is-done .sec-h:after{content:"🌸 已完成";font-size:12px;color:#65b99a;background:#e5f8ef;border-radius:99px;padding:3px 9px;animation:badgePop .55s cubic-bezier(.2,1.7,.4,1)}
+@keyframes doneGlow{0%{box-shadow:0 0 0 0 rgba(168,230,207,0)}45%{box-shadow:0 0 0 7px rgba(168,230,207,.35)}100%{box-shadow:0 0 0 0 rgba(168,230,207,0)}}
+@keyframes badgePop{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
+.study-complete{animation:studyBounce .7s cubic-bezier(.2,1.6,.4,1)}
+@keyframes studyBounce{0%{transform:scale(1)}35%{transform:scale(1.035) rotate(-1deg)}70%{transform:scale(.99) rotate(1deg)}100%{transform:scale(1)}}
+.study-spark{position:fixed;z-index:9998;pointer-events:none;font-size:24px;animation:studySpark .95s ease-out forwards}
+@keyframes studySpark{0%{opacity:0;transform:translate(0,10px) scale(.4) rotate(-20deg)}25%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.35) rotate(35deg)}}
+@media(prefers-reduced-motion:reduce){.study-progress .fill:after,.sec.is-done,.study-complete,.study-spark{animation:none}}
+
 </style>
 </head>
 <body>
@@ -263,11 +286,11 @@ function rQ(){
 }
 var MOODS=[[0,"(｡•́︿•̀｡) 还没开始，先打勾第一个吧","M43 68q7-5 14 0"],[1,"(•̀ᴗ•́)و 出发啦，慢慢来","M43 64q7 5 14 0"],[34,"ヽ(•‿•)ノ 已经三分之一啦","M43 64q7 7 14 0"],[67,"✧٩(ˊᗜˋ*)و✧ 快到终点了！","M41 62q9 10 18 0"],[100,"🎉 全部搞定！","M40 61q10 13 20 0"]];
 function rStudy(){
- var s=sub(),si=S.subs.indexOf(s),t=0,d=0;s.secs.forEach(function(x){var r=prog(x.items);d+=r[0];t+=r[1]});
+ var s=sub(),si=S.subs.indexOf(s),t=0,d=0;s.secs.forEach(function(x){var allItems=(x.items||[]).slice();(x.topics||[]).forEach(function(g){allItems=allItems.concat(g.items||[])});var r=prog(allItems);d+=r[0];t+=r[1]});
  var v=t?Math.round(d/t*100):0,m=MOODS[0];MOODS.forEach(function(x){if(v>=x[0]&&(v>0||x[0]===0))m=x});
  card("study",'<div class="tabs">'+S.subs.map(function(x){return'<button class="tab'+(x.id===s.id?' on':'')+'" data-a="tab" data-id="'+x.id+'">'+esc(x.name)+'</button>'}).join("")+'</div>'
- +'<div class="hero"><svg viewBox="0 0 100 100" aria-hidden="true"><ellipse cx="50" cy="90" rx="30" ry="6" fill="var(--line)"/><path d="M18 62C18 30 36 14 50 14s32 16 32 48c0 20-14 28-32 28S18 82 18 62Z" fill="#fff0f4" stroke="var(--pink)" stroke-width="4"/><circle cx="30" cy="62" r="7" fill="var(--pink)" opacity=".35"/><circle cx="70" cy="62" r="7" fill="var(--pink)" opacity=".35"/><circle cx="39" cy="52" r="4" fill="#5b3a4a"/><circle cx="61" cy="52" r="4" fill="#5b3a4a"/><path d="'+m[2]+'" fill="none" stroke="#5b3a4a" stroke-width="3" stroke-linecap="round"/><path d="M44 14q6-12 14-6" fill="none" stroke="var(--mint)" stroke-width="5" stroke-linecap="round"/></svg><div class="big"><div class="pct">'+v+'%</div><div class="mood">'+m[1]+' · '+d+'/'+t+'</div><div class="bar" role="progressbar" aria-valuenow="'+v+'" aria-valuemin="0" aria-valuemax="100"><div class="fill" style="width:'+v+'%"></div></div></div></div>'
- +s.secs.map(function(x,j){var r=prog(x.items);return'<div class="sec"><div class="sec-h"><span class="nm" contenteditable="true" spellcheck="false" data-rp="subs|'+si+'|secs|'+j+'|t">'+esc(x.t)+'</span><small>'+r[0]+'/'+r[1]+'</small><button class="x" data-a="delsec" data-i="'+j+'" aria-label="删除小节">🗑</button></div><div class="mini"><i style="width:'+(r[1]?r[0]/r[1]*100:0)+'%"></i></div>'+LST("subs|"+si+"|secs|"+j+"|items","加一个小口…")+'</div>'}).join("")
+ +'<div class="hero"><svg viewBox="0 0 100 100" aria-hidden="true"><ellipse cx="50" cy="90" rx="30" ry="6" fill="var(--line)"/><path d="M18 62C18 30 36 14 50 14s32 16 32 48c0 20-14 28-32 28S18 82 18 62Z" fill="#fff0f4" stroke="var(--pink)" stroke-width="4"/><circle cx="30" cy="62" r="7" fill="var(--pink)" opacity=".35"/><circle cx="70" cy="62" r="7" fill="var(--pink)" opacity=".35"/><circle cx="39" cy="52" r="4" fill="#5b3a4a"/><circle cx="61" cy="52" r="4" fill="#5b3a4a"/><path d="'+m[2]+'" fill="none" stroke="#5b3a4a" stroke-width="3" stroke-linecap="round"/><path d="M44 14q6-12 14-6" fill="none" stroke="var(--mint)" stroke-width="5" stroke-linecap="round"/></svg><div class="big"><div class="pct">'+v+'%</div><div class="mood">'+m[1]+' · '+d+'/'+t+'</div><div class="study-progress" role="progressbar" aria-valuenow="'+v+'" aria-valuemin="0" aria-valuemax="100"><div class="fill" style="width:'+v+'%"></div></div></div></div>'
+ +s.secs.map(function(x,j){x.topics=x.topics||[];var flat=(x.items||[]).slice();x.topics.forEach(function(g){flat=flat.concat(g.items||[])});var r=prog(flat),done=r[1]>0&&r[0]===r[1];return'<div class="sec'+(done?' is-done':'')+'"><div class="sec-h"><span class="nm" contenteditable="true" spellcheck="false" data-rp="subs|'+si+'|secs|'+j+'|t">'+esc(x.t)+'</span><small>'+r[0]+'/'+r[1]+'</small><button class="x" data-a="delsec" data-i="'+j+'" aria-label="删除小节">🗑</button></div><div class="mini"><i style="width:'+(r[1]?r[0]/r[1]*100:0)+'%"></i></div>'+LST("subs|"+si+"|secs|"+j+"|items","加一个小口…") + x.topics.map(function(g,k){var gr=prog(g.items||[]);return'<div class="topic-block"><div class="topic-head"><span>🌷</span><span class="topic-name" contenteditable="true" spellcheck="false" data-rp="subs|'+si+'|secs|'+j+'|topics|'+k+'|t">'+esc(g.t)+'</span><small>'+gr[0]+'/'+gr[1]+'</small><button class="x" data-a="deltopic" data-i="'+j+'" data-k="'+k+'" aria-label="删除小标题">✕</button></div>'+LST("subs|"+si+"|secs|"+j+"|topics|"+k+"|items","添加这个小标题下的任务…")+'</div>'}).join("") + '<div class="topic-add"><input type="text" id="ntopic-'+j+'" placeholder="新增 subtopic，例如：太阳病提纲补充" data-enter="topicbtn-'+j+'"><button class="chip" id="topicbtn-'+j+'" data-a="addtopic" data-i="'+j+'">＋ 添加小标题</button></div></div>'}).join("")
  +'<div class="add"><input type="text" id="nsec" placeholder="新增小节（例如：第六节）" data-enter="nsecb"><button class="p" id="nsecb" data-a="addsec">加小节</button></div>'
  +'<p class="lb">这个课程盒的名字</p><input type="text" data-b="subs|'+si+'|name" data-rr="study" value="'+esc(s.name)+'">'
  +'<div class="add"><input type="text" id="nsub" placeholder="新增课程盒（例如：病理学）" data-enter="nsubb"><button class="p" id="nsubb" data-a="addsub">加课程</button><button data-a="delsub">删除当前</button></div>');
@@ -297,6 +320,7 @@ var T={mode:"w",left:S.pomo.w*60,run:null};
 function fmt(n){return String(Math.floor(n/60)).padStart(2,"0")+":"+String(n%60).padStart(2,"0")}
 function rPomo(){var c=$("c-pomo"),d=DC.pomo;c.innerHTML='<p class="ct">'+TT.pomo+'</p><p class="tip" data-noed>已完成 '+S.pomo.c+' 个小番茄</p><div class="clock" id="clk">'+fmt(T.left)+'</div><div class="mood">'+(T.mode==="w"?"专心复习中 📖":"休息一下 🍵")+'</div><div class="row"><button class="p" data-a="pstart">'+(T.run?"暂停":"开始")+'</button><button data-a="preset">重置</button><button data-a="pskip">切换</button></div><div class="row">专注 <input type="number" min="1" max="120" id="pw" value="'+S.pomo.w+'" aria-label="专注分钟"> 分 休息 <input type="number" min="1" max="60" id="pb2" value="'+S.pomo.b+'" aria-label="休息分钟"> 分</div><div class="deco"><span class="em">'+d[2]+'</span><span>'+d[0]+' '+d[1]+'</span></div>';c.hidden=!!S.hide.pomo;skin(c)}
 function tick(){T.left--;if(T.left<=0){if(T.mode==="w"){S.pomo.c++;save()}T.mode=T.mode==="w"?"b":"w";T.left=(T.mode==="w"?S.pomo.w:S.pomo.b)*60;if(T.mode==="b")confetti();rPomo()}else{var c=$("clk");if(c)c.textContent=fmt(T.left)}}
+function studySparkles(el){var rect=el.getBoundingClientRect(),em=["✨","🌸","💖","⭐","🫧","🎀"];for(var i=0;i<18;i++){var s=document.createElement("span");s.className="study-spark";s.textContent=em[i%em.length];s.style.left=(rect.left+Math.random()*rect.width)+"px";s.style.top=(rect.top+Math.min(260,rect.height*.45)+Math.random()*80)+"px";s.style.setProperty("--dx",(Math.random()*180-90)+"px");s.style.setProperty("--dy",(-55-Math.random()*130)+"px");document.body.appendChild(s);setTimeout(function(n){return function(){n.remove()}}(s),1100)}}
 function confetti(){var b=$("pop"),em=["🌸","⭐","🍡","💖","✨"];for(var i=0;i<26;i++){var s=document.createElement("span");s.textContent=em[i%5];s.style.left=Math.random()*100+"%";s.style.animationDelay=Math.random()*.8+"s";b.appendChild(s)}setTimeout(function(){b.innerHTML=""},3500)}
 function rNotes(){var c=$("c-notes"),d=DC.notes;c.innerHTML='<p class="ct">'+TT.notes+'</p><textarea id="notes" style="min-height:150px" placeholder="例如：太阳中风 vs 太阳伤寒 的区别…"></textarea><div class="deco"><span class="em">'+d[2]+'</span><span>'+d[0]+' '+d[1]+'</span></div>';skin(c);$("notes").value=S.notes||"";$("notes").oninput=function(){S.notes=this.value;save()}}
 
@@ -323,6 +347,8 @@ document.addEventListener("click",function(e){
  else if(a==="delsub"){if(S.subs.length<2)return;S.subs.splice(si,1);S.cur=S.subs[0].id}
  else if(a==="addsec"){v=$("nsec").value.trim();if(!v)return;s.secs.push(mk(v,[]));fid="nsec"}
  else if(a==="delsec"){s.secs.splice(+D.i,1)}
+ else if(a==="addtopic"){var sec=s.secs[+D.i],topicInput=$("ntopic-"+D.i);v=topicInput&&topicInput.value.trim();if(!v)return;sec.topics=sec.topics||[];sec.topics.push({id:uid(),t:v,items:[]});fid="ntopic-"+D.i}
+ else if(a==="deltopic"){var sec=s.secs[+D.i];if(sec&&sec.topics)sec.topics.splice(+D.k,1)}
  else if(a==="addcls"){S.classes.push({id:uid(),dow:0,s:"09:00",e:"10:00",code:"",name:"新课程",teacher:"",room:""})}
  else if(a==="delcls"){S.classes.splice(+D.i,1)}
  else if(a==="cleartodo"){S.todos=S.todos.filter(function(x){return!x.d})}
@@ -345,7 +371,7 @@ document.addEventListener("click",function(e){
 document.addEventListener("change",function(e){
  var t=e.target,D=t.dataset;
  if(D.a==="cd"){sp(D.b,t.checked);save();rWeek()}
- else if(D.a==="lt"){var it=find(gl(D.p),D.i);it.d=t.checked;save();var r=prog(gl(D.p));all();if(t.checked&&r[0]===r[1])confetti()}
+ else if(D.a==="lt"){var it=find(gl(D.p),D.i);it.d=t.checked;save();var r=prog(gl(D.p));all();if(t.checked&&r[0]===r[1]){confetti();if(D.p.indexOf("subs|")===0){var cardEl=$("c-study");cardEl.classList.remove("study-complete");void cardEl.offsetWidth;cardEl.classList.add("study-complete");studySparkles(cardEl)}}}
  else if(t.id==="pw"||t.id==="pb2"){var n=Math.max(1,Math.min(120,+t.value||25));if(t.id==="pw")S.pomo.w=n;else S.pomo.b=n;save();if(!T.run)T.left=(T.mode==="w"?S.pomo.w:S.pomo.b)*60;rPomo()}
  else if(D.rr){RR[D.rr]();if(D.rr==="study")rSet()}
 });
